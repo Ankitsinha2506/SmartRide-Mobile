@@ -1,4 +1,7 @@
 {
   "name": "SmartRideMobile",
-  "displayName": "SmartRideMobile"
+  "displayName": "SmartRideMobile",
+  "plugins": [
+    "expo-secure-store"
+  ]
 }

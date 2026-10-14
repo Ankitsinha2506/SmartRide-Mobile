@@ -1,19 +1,17 @@
-import * as Keychain from 'react-native-keychain';
-const service = 'com.smartride.session';
+import * as SecureStore from 'expo-secure-store';
+const sessionKey = 'com.smartride.session';
 export async function saveSession(session) {
-  await Keychain.setGenericPassword('session', JSON.stringify(session), {
-    service,
-  });
+  await SecureStore.setItemAsync(sessionKey, JSON.stringify(session));
 }
 export async function readSession() {
-  const value = await Keychain.getGenericPassword({ service });
+  const value = await SecureStore.getItemAsync(sessionKey);
   if (!value) return null;
   try {
-    return JSON.parse(value.password);
+    return JSON.parse(value);
   } catch {
     return null;
   }
 }
 export async function clearSession() {
-  await Keychain.resetGenericPassword({ service });
+  await SecureStore.deleteItemAsync(sessionKey);
 }

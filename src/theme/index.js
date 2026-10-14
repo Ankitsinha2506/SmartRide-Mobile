@@ -1,8 +1,11 @@
 export const colors = {
   primary: '#146C5B',
   primaryDark: '#0E4C41',
-  secondary: '#F3C76B',
-  background: '#F5F7F4',
+  accent: '#B8E51A',
+  accentSoft: '#EEF8CF',
+  ink: '#11140F',
+  secondary: '#E5F1B7',
+  background: '#F5F6F2',
   surface: '#FFFFFF',
   text: '#18211F',
   muted: '#71807B',

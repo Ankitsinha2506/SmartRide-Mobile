@@ -23,7 +23,7 @@ export function AppButton({
     >
       {loading ? (
         <ActivityIndicator
-          color={variant === 'primary' ? 'white' : colors.primary}
+          color={variant === 'primary' ? colors.ink : colors.primary}
         />
       ) : (
         <Text style={[styles.text, variant !== 'primary' && styles.altText]}>
@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: spacing.lg,
   },
-  primary: { backgroundColor: colors.primary },
-  secondary: { backgroundColor: '#E2F0EB' },
+  primary: { backgroundColor: colors.accent },
+  secondary: { backgroundColor: colors.accentSoft },
   danger: { backgroundColor: '#F7E4E4' },
-  text: { color: 'white', fontWeight: '800', fontSize: 15 },
+  text: { color: colors.ink, fontWeight: '800', fontSize: 15 },
   altText: { color: colors.primaryDark },
   pressed: { opacity: 0.82 },
   disabled: { opacity: 0.5 },

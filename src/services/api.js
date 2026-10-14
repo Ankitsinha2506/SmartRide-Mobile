@@ -9,10 +9,16 @@ api.interceptors.request.use(config => {
 });
 api.interceptors.response.use(
   response => response.data.data,
-  error =>
-    Promise.reject(
-      new Error(
-        error.response?.data?.message || 'Unable to complete your request',
-      ),
-    ),
+  error => {
+    const serverMessage = error.response?.data?.message;
+    const message =
+      serverMessage ||
+      (error.code === 'ECONNABORTED'
+        ? 'The SmartRide server took too long to respond. Please try again.'
+        : error.request
+          ? `Cannot connect to the SmartRide API at ${env.apiUrl}. Make sure the backend is running and your phone and computer are on the same network.`
+          : error.message || 'Unable to complete your request');
+
+    return Promise.reject(new Error(message));
+  },
 );

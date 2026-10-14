@@ -25,7 +25,7 @@ npm run ios
 
 This customer app reserves Metro port `8081`, allowing it to run alongside the driver app on port `8082`.
 
-The development API host is set in `src/config/env.js`: Android emulator uses `10.0.2.2`, while iOS Simulator uses `localhost`. For a physical device, replace it with the computer's LAN address. Release builds must use an HTTPS production URL.
+The development API host in `src/config/env.js` defaults to the host running Expo, which lets Expo Go on a physical device reach the backend on the same computer. Keep the phone and computer on the same network and start the backend on port `8080`. To override the API address, set `EXPO_PUBLIC_API_URL` (for example, `http://192.168.1.10:8080/api/v1`) before starting Expo. For Android emulators, `EXPO_PUBLIC_API_HOST=10.0.2.2` can be used if needed. Release builds must use an HTTPS production URL.
 
 After changing native dependencies, run:
 
